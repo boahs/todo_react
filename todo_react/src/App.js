@@ -13,12 +13,19 @@ const todoData = [
 ];
 function App() {
   const [todos, setTodos] = useState(todoData);
+
+  const addTodo = (text) => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
+
   return (
     <div className="App">
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo key={index} index={index} todo={todo} />
         ))}
+        <TodoForm />
       </div>
     </div>
   );
