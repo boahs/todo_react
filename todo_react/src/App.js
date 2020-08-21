@@ -1,34 +1,25 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Todo from "./components/Todo";
+import TodoForm from "./components/TodoForm";
 
-const todoText = [
-  { text: "learn more about React" },
+console.log();
+
+const todoData = [
+  { text: "Learn about React" },
   { text: "Meet friend for lunch" },
   { text: "Build really cool todo app" },
 ];
-
-console.log(todoText);
-
 function App() {
-  const [todos, setTodos] = useState([todoText]); //adding in initial todoText object
-  // console.log(todos);
+  const [todos, setTodos] = useState(todoData);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="todo-list">
+        {todos.map((todo, index) => (
+          <Todo key={index} index={index} todo={todo} />
+        ))}
+      </div>
     </div>
   );
 }
